@@ -18,7 +18,7 @@ parser = OptionParser.new do |opts|
     options[:date] = Date.parse(date)
   end
 
-  opts.on('--latest', 'Print latest exchange rate') do |date|
+  opts.on('--latest', 'Print latest exchange rate') do
     options[:date] = Date.today
   end
 end
