@@ -1,5 +1,7 @@
 # ExchangeRatesNBP
 
+[![Build Status](https://travis-ci.org/maciejmajewski/exchange_rates_nbp.svg?branch=master)](https://travis-ci.org/maciejmajewski/exchange_rates_nbp)
+
 Library for accessing exchange rates from nbp.pl.
 
 It can be used via API or via command line utility.
