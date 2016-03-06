@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'exchange_rates_nbp'
+
+require 'pry'
+Pry.start
