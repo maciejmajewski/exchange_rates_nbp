@@ -3,6 +3,7 @@
 require 'exchange_rates_nbp'
 
 require 'optparse'
+require 'colorize'
 
 options = {}
 
@@ -21,12 +22,26 @@ parser = OptionParser.new do |opts|
   opts.on('--latest', 'Print latest exchange rate') do
     options[:date] = Date.today
   end
+
+  opts.on('-v', '--verbose', 'Show verbose info') do
+    options[:verbose] = true
+  end
 end
 
 parser.parse!
 
 if options[:currency_code].nil? || options[:date].nil?
+  puts '`currency_code` and `date` params are required'.red
   puts parser.help
 else
-  puts ExchangeRatesNBP.exchange_rate(options[:date], options[:currency_code])
+  info = ExchangeRatesNBP.exchange_rate_info(options[:date],
+                                             options[:currency_code])
+
+  if options[:verbose]
+    puts "Publish date: #{info[:publish_date]}"
+    puts "Conversion factor: #{info[:conversion_factor]}"
+    puts "Exchange rate: #{info[:exchange_rate]}"
+  else
+    puts info[:exchange_rate]
+  end
 end

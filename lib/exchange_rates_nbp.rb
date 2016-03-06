@@ -22,16 +22,25 @@ module ExchangeRatesNBP
   DEFAULT_TABLE_TYPES = TABLE_TYPES.values.first
 
   def self.exchange_rate(date, currency_code, table = DEFAULT_TABLE_TYPES)
+    exchange_rate_info(date, currency_code, table)[:exchange_rate]
+  end
+
+  def self.exchange_rate_info(date, currency_code, table = DEFAULT_TABLE_TYPES)
     table_id = find_table_id(date, table)
-    extract_currency(table_id, currency_code)
+    exchange_rate_hash(table_id, currency_code)
   end
 
-  def self.find_table_id(date, table)
-    Clients::TableList.new(date.year, table).fetch_closest_to(date)
-  end
+  class << self
+    private
 
-  def self.extract_currency(table_id, currency_code)
-    ExchangeRatesNBP::Clients::CurrencyDataSet.new(table_id)
-                                              .exchange_rate(currency_code)
+    def find_table_id(date, table)
+      Clients::TableList.new(date.year, table).fetch_closest_to(date)
+    end
+
+    def exchange_rate_hash(table_id, currency_code)
+      ExchangeRatesNBP::Clients::CurrencyDataSet
+        .new(table_id)
+        .exchange_rate(currency_code)
+    end
   end
 end
