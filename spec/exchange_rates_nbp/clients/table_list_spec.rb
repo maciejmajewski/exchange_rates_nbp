@@ -54,7 +54,7 @@ describe ExchangeRatesNBP::Clients::TableList do
       let(:date) { Date.new(2016, 3, 6) }
       let(:year) { date.year }
 
-      it 'returns table ID for previous working day', :vcr do
+      it 'returns table ID for this', :vcr do
         expect(subject.fetch_closest_to(date)).to match(/^a[0-9]{3}z160304$/)
       end
     end

@@ -1,8 +1,8 @@
 # ExchangeRatesNBP
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/exchange_rates_nbp`. To experiment with that code, run `bin/console` for an interactive prompt.
+Library for accessing exchange rates from nbp.pl.
 
-TODO: Delete this and the text above, and describe your gem
+It can be used via API or via command line utility.
 
 ## Installation
 
@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+ExchangeRatesNBP.exchange_rate(Date.new(2016, 1, 1), 'EUR')
+# => 4.2615
+```
+
+### Via command line
+
+```
+exchange_rates_nbp --date DATE --currency_code CURRENCY_CODE --table a
+# => 4.2615
+```
 
 ## Development
 
@@ -32,10 +42,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/exchange_rates_nbp.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/maciejmajewski/exchange_rates_nbp.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

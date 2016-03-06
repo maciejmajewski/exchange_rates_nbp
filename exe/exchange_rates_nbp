@@ -1,3 +1,32 @@
 #!/usr/bin/env ruby
 
 require 'exchange_rates_nbp'
+
+require 'optparse'
+
+options = {}
+
+parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: exchange_rates_nbp [options]'
+
+  opts.on('--currency-code=CURRENCY_CODE',
+          'Currency code for query') do |currency_code|
+    options[:currency_code] = currency_code
+  end
+
+  opts.on('--date=DATE', 'Date for query') do |date|
+    options[:date] = Date.parse(date)
+  end
+
+  opts.on('--latest', 'Print latest exchange rate') do |date|
+    options[:date] = Date.today
+  end
+end
+
+parser.parse!
+
+if options[:currency_code].nil? || options[:date].nil?
+  puts parser.help
+else
+  puts ExchangeRatesNBP.exchange_rate(options[:date], options[:currency_code])
+end

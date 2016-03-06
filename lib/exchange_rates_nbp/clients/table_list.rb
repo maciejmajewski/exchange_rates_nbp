@@ -22,8 +22,8 @@ module ExchangeRatesNBP
       private
 
       def validate_year
-        fail 'Data for nbp.pl is available from 2002 onwards' if @year < 2002
-        fail "Can't fetch data for the future" if @year > Date.today.year
+        raise 'Data for nbp.pl is available from 2002 onwards' if @year < 2002
+        raise "Can't fetch data for the future" if @year > Date.today.year
       end
 
       def fetch_data_for_previous_year

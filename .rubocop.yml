@@ -1,2 +1,7 @@
-inherit_gem:
-  td_critic: rubocop.yml
+Style/Documentation:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+require: rubocop-rspec
