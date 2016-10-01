@@ -32,9 +32,24 @@ ExchangeRatesNBP.exchange_rate(Date.new(2016, 1, 1), 'EUR')
 
 ### Via command line
 
-```
+```sh
 exchange_rates_nbp --date DATE --currency_code CURRENCY_CODE --table a
 # => 4.2615
+```
+
+#### Getting latest exchange rate
+
+```sh
+exchange_rates_nbp --latest --currency-code=EUR
+# => 4.312
+```
+#### Verbose mode
+
+```sh
+exchange_rates_nbp --latest --currency-code=EUR --verbose
+# => Publish date: 2016-09-30
+# => Conversion factor: 1
+# => Exchange rate: 4.312
 ```
 
 ## Development
