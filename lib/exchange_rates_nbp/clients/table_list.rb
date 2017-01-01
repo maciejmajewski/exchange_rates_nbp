@@ -43,8 +43,18 @@ module ExchangeRatesNBP
       end
 
       def all_table_ids
-        body = HTTP.get(BASE_URL + table_list_url, encoding: 'utf-8').to_s
-        body.scan(PATTERN)
+        if @year == Date.today.year
+          response = request_table(FILE_NAME_CURRENT_YEAR)
+        else
+          response = request_table(FILE_NAME_YEAR_PATTERN.sub('{year}',
+                                                              @year.to_s))
+
+          if response.status == 404
+            response = request_table(FILE_NAME_CURRENT_YEAR)
+          end
+        end
+
+        response.to_s.scan(PATTERN)
       end
 
       def table_list_url
@@ -53,6 +63,10 @@ module ExchangeRatesNBP
         else
           FILE_NAME_YEAR_PATTERN.sub('{year}', @year.to_s)
         end
+      end
+
+      def request_table(suffix)
+        HTTP.get(BASE_URL + suffix, encoding: 'utf-8')
       end
     end
   end

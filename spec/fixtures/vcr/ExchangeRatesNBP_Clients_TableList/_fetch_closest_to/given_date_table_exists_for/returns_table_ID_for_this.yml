@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.nbp.pl/kursy/xml/dir.txt
+    uri: http://www.nbp.pl/kursy/xml/dir2016.txt
     body:
       encoding: US-ASCII
       string: ''

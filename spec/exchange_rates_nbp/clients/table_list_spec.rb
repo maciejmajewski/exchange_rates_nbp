@@ -43,6 +43,15 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
+    context 'given date at beginning of the year before tables are published' do
+      let(:date) { Date.new(2017, 1, 1) }
+      let(:year) { date.year }
+
+      it 'returns table ID from previous year', :vcr do
+        expect(closest_date).to match(/^a[0-9]{3}z161230$/)
+      end
+    end
+
     context 'given date table exists for' do
       let(:date) { Date.new(2016, 3, 4) }
       let(:year) { date.year }
