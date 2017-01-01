@@ -1,3 +1,7 @@
+# 0.1.3 / 2017-01-02
+
+* Fix edge case when table for last year isn't published yet
+
 # 0.1.2 / 2016-10-01
 
 * Add verbose mode
