@@ -5,3 +5,10 @@ require: rubocop-rspec
 
 RSpec/NestedGroups:
   MaxNesting: 3
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '**/*.gemspec'
