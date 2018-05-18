@@ -3,8 +3,11 @@ Style/Documentation:
 
 require: rubocop-rspec
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 RSpec/NestedGroups:
-  MaxNesting: 3
+  Max: 3
 
 Metrics/BlockLength:
   Exclude:

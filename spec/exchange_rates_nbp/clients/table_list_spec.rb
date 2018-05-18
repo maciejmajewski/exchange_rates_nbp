@@ -8,7 +8,7 @@ describe ExchangeRatesNBP::Clients::TableList do
 
     let(:date) { Date.today }
 
-    context 'given unsupported year' do
+    context 'when year is unsupported' do
       let(:year) { 1999 }
 
       it 'raises exception' do
@@ -17,7 +17,7 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
-    context 'given year in the future' do
+    context 'when year is in the future' do
       let(:year) { 2017 }
 
       before do
@@ -34,7 +34,7 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
-    context 'given date at beginning of the year' do
+    context 'when date is at beginning of the year' do
       let(:date) { Date.new(2016, 1, 1) }
       let(:year) { date.year }
 
@@ -43,7 +43,8 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
-    context 'given date at beginning of the year before tables are published' do
+    context 'when date is at beginning of the year '\
+            'before tables are published' do
       let(:date) { Date.new(2017, 1, 1) }
       let(:year) { date.year }
 
@@ -52,7 +53,7 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
-    context 'given date table exists for' do
+    context 'when table for given date exists' do
       let(:date) { Date.new(2016, 3, 4) }
       let(:year) { date.year }
 
@@ -61,7 +62,7 @@ describe ExchangeRatesNBP::Clients::TableList do
       end
     end
 
-    context 'given future date' do
+    context 'when date is in the future' do
       let(:date) { Date.new(2016, 3, 6) }
       let(:year) { date.year }
 
