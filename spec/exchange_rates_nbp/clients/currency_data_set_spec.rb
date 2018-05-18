@@ -6,7 +6,7 @@ describe ExchangeRatesNBP::Clients::CurrencyDataSet do
 
     let(:table_id) { 'a044z160304' }
 
-    context 'given incorrect currency code' do
+    context 'when currency code is incorrect' do
       let(:currency_code) { 'ABC' }
 
       it 'raises an exception' do
@@ -15,7 +15,7 @@ describe ExchangeRatesNBP::Clients::CurrencyDataSet do
       end
     end
 
-    context 'given correct currency code' do
+    context 'when currency code is correct' do
       let(:currency_code) { 'EUR' }
 
       it 'returns exchange rate' do
