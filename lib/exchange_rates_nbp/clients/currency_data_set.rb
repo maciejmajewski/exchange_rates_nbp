@@ -23,6 +23,12 @@ module ExchangeRatesNBP
         currency_element_to_hash(xml, doc)
       end
 
+      def exchange_table()
+        xml = Oga.parse_xml(data)
+
+        table_element_to_hash(xml)
+      end
+
       private
 
       def currency_element_to_hash(xml, doc)
@@ -33,8 +39,19 @@ module ExchangeRatesNBP
         }
       end
 
+      def table_element_to_hash(xml)
+        {
+          publish_date: to_publish_date(xml),
+          exchange_table_name: to_exchange_table(xml)
+        }
+      end
+
       def to_publish_date(xml)
         Date.parse(xml.css(FIELD_PUBLISH_DATE).text)
+      end
+
+      def to_exchange_table(xml)
+        xml.css(FIELD_TABLE_NAME).text
       end
 
       def to_exchange_rate(doc)
