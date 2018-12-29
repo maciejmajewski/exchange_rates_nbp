@@ -1,7 +1,7 @@
 module ExchangeRatesNBP
   module Clients
     class TableList
-      PATTERN = /[abch][0-9]{3}z[0-9]{6}/
+      PATTERN = /[abch][0-9]{3}z[0-9]{6}/.freeze
 
       def initialize(year, table_type)
         @year = year
@@ -14,6 +14,7 @@ module ExchangeRatesNBP
         loop do
           table_id = table_id_for(date)
           return table_id unless table_id.nil?
+
           date -= 1
           return fetch_data_for_previous_year if date.year != @year
         end
