@@ -23,7 +23,7 @@ module ExchangeRatesNBP
         currency_element_to_hash(xml, doc)
       end
 
-      def exchange_table()
+      def exchange_table
         xml = Oga.parse_xml(data)
 
         table_element_to_hash(xml)

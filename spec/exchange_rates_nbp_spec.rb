@@ -26,9 +26,9 @@ describe ExchangeRatesNBP do
     let(:date) { Date.new(2016, 2, 1) }
 
     it 'fetches currency table number', :vcr do
-      expect(exchange_table_number).to eq("020/A/NBP/2016")
+      expect(exchange_table_number).to eq('020/A/NBP/2016')
     end
-  end  
+  end
 
   describe '#exchange_table_date' do
     subject(:publish_date) do
@@ -38,8 +38,7 @@ describe ExchangeRatesNBP do
     let(:date) { Date.new(2016, 2, 7) }
 
     it 'fetches currency table publish date', :vcr do
-      expect(publish_date).to eq( Date.new(2016, 2, 5) )
+      expect(publish_date).to eq(Date.new(2016, 2, 5))
     end
-  end 
-
+  end
 end
