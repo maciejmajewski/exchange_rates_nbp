@@ -1,3 +1,7 @@
+# 0.2.0 / 2018-12-29
+
+* Expose `exchange_table_number` and `exchange_table_date`
+
 # 0.1.3 / 2017-01-02
 
 * Fix edge case when table for last year isn't published yet

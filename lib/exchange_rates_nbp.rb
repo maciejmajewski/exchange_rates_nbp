@@ -21,6 +21,19 @@ module ExchangeRatesNBP
 
   DEFAULT_TABLE_TYPES = TABLE_TYPES.values.first
 
+  def self.exchange_table_number(date, table = DEFAULT_TABLE_TYPES)
+    exchange_table_info(date, table)[:exchange_table_name]
+  end
+
+  def self.exchange_table_date(date, table = DEFAULT_TABLE_TYPES)
+    exchange_table_info(date, table)[:publish_date]
+  end
+
+  def self.exchange_table_info(date, table = DEFAULT_TABLE_TYPES)
+    table_id = find_table_id(date, table)
+    exchange_table_hash(table_id)
+  end
+
   def self.exchange_rate(date, currency_code, table = DEFAULT_TABLE_TYPES)
     exchange_rate_info(date, currency_code, table)[:exchange_rate]
   end
@@ -41,6 +54,12 @@ module ExchangeRatesNBP
       ExchangeRatesNBP::Clients::CurrencyDataSet
         .new(table_id)
         .exchange_rate(currency_code)
+    end
+
+    def exchange_table_hash(table_id)
+      ExchangeRatesNBP::Clients::CurrencyDataSet
+        .new(table_id)
+        .exchange_table
     end
   end
 end
